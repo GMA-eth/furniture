@@ -85,9 +85,9 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
 
       <Breadcrumbs
         items={[
-          { label: dict.product.breadcrumbHome, href: `/${lang}` },
-          { label: category.name, href: `/${lang}/catalog/${localized.category}` },
-          { label: localized.name, href: `/${lang}/product/${localized.slug}` },
+          { label: dict.product.breadcrumbHome, href: "/" },
+          { label: category.name, href: `/catalog/${localized.category}` },
+          { label: localized.name, href: `/product/${localized.slug}` },
         ]}
         lang={lang}
         dict={dict}
