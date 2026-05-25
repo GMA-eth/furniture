@@ -24,7 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   return (
     <div className="flex flex-col gap-20 pb-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd(baseUrl), websiteJsonLd(baseUrl)]) }} />
-      <Hero dict={dict} />
+      <Hero dict={dict} lang={lang} />
       <CategoryGrid categories={categories} dict={dict} lang={lang} />
       <Bestsellers products={bestsellers} dict={dict} lang={lang} />
       <Testimonials dict={dict} />

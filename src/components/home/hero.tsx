@@ -5,9 +5,10 @@ import type { Dictionary } from "@/i18n/dictionaries";
 
 interface HeroProps {
   dict: Dictionary;
+  lang: string;
 }
 
-export function Hero({ dict }: HeroProps) {
+export function Hero({ dict, lang }: HeroProps) {
   return (
     <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-muted">
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
@@ -19,10 +20,10 @@ export function Hero({ dict }: HeroProps) {
           {dict.home.heroSubtitle}
         </p>
         <div className="mt-8 flex items-center justify-center gap-4">
-          <Link href="/catalog" className={cn(buttonVariants({ size: "lg" }))}>
+          <Link href={`/${lang}/catalog`} className={cn(buttonVariants({ size: "lg" }))}>
             {dict.home.shopCollection}
           </Link>
-          <Link href="/catalog/living-room" className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>
+          <Link href={`/${lang}/catalog/living-room`} className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>
             {dict.home.livingRoom}
           </Link>
         </div>
