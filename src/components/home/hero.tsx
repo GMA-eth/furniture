@@ -19,7 +19,7 @@ export function Hero({ dict, lang }: HeroProps) {
         <p className="mt-6 text-lg text-white/80 leading-relaxed">
           {dict.home.heroSubtitle}
         </p>
-        <div className="mt-8 flex items-center justify-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link href={`/${lang}/catalog`} className={cn(buttonVariants({ size: "lg" }))}>
             {dict.home.shopCollection}
           </Link>

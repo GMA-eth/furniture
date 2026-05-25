@@ -26,7 +26,7 @@ export function Testimonials({ dict }: TestimonialsProps) {
 
   return (
     <section aria-labelledby="testimonials-heading" className="bg-muted/30">
-      <div className="mx-auto max-w-screen-2xl px-4 py-20">
+      <div className="mx-auto max-w-screen-2xl px-4 py-10 sm:py-16 lg:py-20">
         <h2 id="testimonials-heading" className="font-heading text-center text-2xl font-bold tracking-tight sm:text-3xl">
           {dict.home.testimonials}
         </h2>

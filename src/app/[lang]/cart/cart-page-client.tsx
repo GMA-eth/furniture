@@ -47,7 +47,7 @@ export function CartPageClient({ dict, lang }: CartPageClientProps) {
 
   return (
     <div className="mx-auto max-w-screen-2xl px-4 py-12">
-      <h1 className="font-heading text-3xl font-bold tracking-tight">
+      <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">
         {dict.cart.title} ({itemCount})
       </h1>
 

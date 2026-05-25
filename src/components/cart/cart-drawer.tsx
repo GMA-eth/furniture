@@ -69,7 +69,7 @@ export function CartDrawer({ open, onOpenChange, dict, lang }: CartDrawerProps) 
         ) : (
           <>
             <ScrollArea className="flex-1 -mx-6 px-6">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 px-0.5">
                 {items.map((item) => (
                   <div key={`${item.productId}-${item.color}-${item.size ?? "nosize"}`} className="flex gap-4">
                     <div className="relative size-20 shrink-0 overflow-hidden rounded-lg bg-muted">

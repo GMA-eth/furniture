@@ -52,7 +52,7 @@ export function CheckoutPageClient({ dict, lang }: CheckoutPageClientProps) {
       <div className="mx-auto max-w-lg px-4 py-20 text-center">
         <div className="flex flex-col items-center gap-4">
           <span className="text-5xl">&#10003;</span>
-          <h1 className="font-heading text-3xl font-bold tracking-tight">{dict.checkout.orderConfirmed}</h1>
+          <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">{dict.checkout.orderConfirmed}</h1>
           <p className="text-muted-foreground leading-relaxed">{dict.checkout.orderConfirmedDesc}</p>
           <Link href={`/${lang}/catalog`} className={cn(buttonVariants(), "mt-4")}>
             {dict.checkout.continueShopping}
@@ -64,7 +64,7 @@ export function CheckoutPageClient({ dict, lang }: CheckoutPageClientProps) {
 
   return (
     <div className="mx-auto max-w-screen-2xl px-4 py-12">
-      <h1 className="font-heading text-3xl font-bold tracking-tight">{dict.checkout.title}</h1>
+      <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">{dict.checkout.title}</h1>
 
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2">
@@ -132,7 +132,7 @@ export function CheckoutPageClient({ dict, lang }: CheckoutPageClientProps) {
                         {item.color}{item.size ? ` / ${item.size}` : ""} &times; {item.quantity}
                       </p>
                     </div>
-                    <span className="ml-4 tabular-nums">{formatCurrency(item.price * item.quantity)}</span>
+                    <span className="ms-4 tabular-nums">{formatCurrency(item.price * item.quantity)}</span>
                   </div>
                 ))}
               </div>

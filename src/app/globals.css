@@ -179,10 +179,13 @@
   }
 }
 
-/* RTL overrides for sheet/drawer */
-html[dir="rtl"] [data-slot="sheet-content"] {
-  right: auto;
-  left: 0;
+/* RTL overrides for carousel and breadcrumb icons */
+html[dir="rtl"] [data-slot="carousel-previous"] svg,
+html[dir="rtl"] [data-slot="carousel-next"] svg {
+  transform: scaleX(-1);
+}
+html[dir="rtl"] [data-slot="breadcrumb"] svg {
+  transform: scaleX(-1);
 }
 
 /* Arabic font adjustments */

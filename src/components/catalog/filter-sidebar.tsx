@@ -72,7 +72,7 @@ export function FilterSidebar({ categories, priceRange, activeFilters, basePath,
             />
             <Label htmlFor={`cat-${cat.slug}`} className="text-sm font-normal cursor-pointer">
               {cat.name}
-              <span className="ml-1 text-xs text-muted-foreground">({cat.productCount})</span>
+              <span className="ms-1 text-xs text-muted-foreground">({cat.productCount})</span>
             </Label>
           </div>
         ))}

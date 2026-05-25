@@ -43,7 +43,7 @@ export function ImageGallery({ images, productName, dict }: ImageGalleryProps) {
         </div>
       </button>
 
-      <div className="flex gap-3 overflow-x-auto pb-1">
+      <div className="flex gap-3 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden snap-x">
         {images.map((image, index) => (
           <button
             key={image.src}
@@ -68,7 +68,7 @@ export function ImageGallery({ images, productName, dict }: ImageGalleryProps) {
       </div>
 
       <Dialog open={zoomOpen} onOpenChange={setZoomOpen}>
-        <DialogContent className="max-w-screen-lg">
+        <DialogContent className="max-w-[min(100%-2rem,1024px)]">
           <DialogTitle className="sr-only">
             {dict.product.imageOf
               .replace("{current}", String(activeIndex + 1))

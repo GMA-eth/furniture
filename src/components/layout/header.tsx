@@ -67,7 +67,7 @@ export function Header({ lang, dict }: HeaderProps) {
             {itemCount > 0 && (
               <Badge
                 variant="secondary"
-                className="absolute -right-1 -top-1 size-5 items-center justify-center rounded-full p-0 text-xs"
+                className="absolute -end-1 -top-1 size-5 items-center justify-center rounded-full p-0 text-xs"
               >
                 {itemCount}
               </Badge>

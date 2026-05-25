@@ -33,7 +33,7 @@ export function Footer({ lang, dict }: FooterProps) {
 
   return (
     <footer className="border-t border-border bg-muted/30">
-      <div className="mx-auto max-w-screen-2xl px-4 py-16">
+      <div className="mx-auto max-w-screen-2xl px-4 py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <Link href={`/${lang}`} className="font-heading text-xl font-bold tracking-tight">

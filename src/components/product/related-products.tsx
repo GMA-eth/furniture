@@ -20,7 +20,7 @@ export function RelatedProducts({ products, dict, lang }: RelatedProductsProps) 
       <Carousel className="mt-8" opts={{ align: "start" }}>
         <CarouselContent className="-ml-4">
           {products.map((product) => (
-            <CarouselItem key={product.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+            <CarouselItem key={product.id} className="ps-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
               <ProductCard product={product} dict={dict} lang={lang} />
             </CarouselItem>
           ))}

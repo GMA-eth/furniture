@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
 
         <div className="flex flex-col gap-6">
           <div>
-            <h1 className="font-heading text-3xl font-bold tracking-tight">{localized.name}</h1>
+            <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">{localized.name}</h1>
             <div className="mt-2 flex items-center gap-2">
               <div className="flex items-center gap-1">
                 <Star className="size-4 fill-primary text-primary" data-icon="inline-start" aria-hidden="true" />
@@ -131,17 +131,17 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
         </div>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-8 sm:mt-12 lg:mt-16">
         <ProductTabs product={localized} dict={dict} />
       </div>
 
       {localized.faq.length > 0 && (
-        <div className="mt-16 max-w-2xl">
+        <div className="mt-8 sm:mt-12 lg:mt-16 max-w-2xl">
           <FaqAccordion faq={localized.faq} dict={dict} />
         </div>
       )}
 
-      <div className="mt-20">
+      <div className="mt-10 sm:mt-14 lg:mt-20">
         <RelatedProducts products={related} dict={dict} lang={lang} />
       </div>
     </div>

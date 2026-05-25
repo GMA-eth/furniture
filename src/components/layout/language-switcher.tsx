@@ -19,7 +19,7 @@ export function LanguageSwitcher({ lang }: LanguageSwitcherProps) {
   const targetPath = cleanPath || `/${targetLang}`;
 
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className="fixed bottom-4 start-4 z-50">
       <Link
         href={targetPath}
         className={cn(buttonVariants({ variant: "outline", size: "sm" }), "shadow-lg")}

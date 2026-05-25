@@ -21,7 +21,7 @@ export function FaqAccordion({ faq, dict }: FaqAccordionProps) {
       <Accordion className="mt-4">
         {faq.map((item, index) => (
           <AccordionItem key={index} value={`item-${index}`}>
-            <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+            <AccordionTrigger className="text-start">{item.question}</AccordionTrigger>
             <AccordionContent className="leading-relaxed text-muted-foreground">
               {item.answer}
             </AccordionContent>

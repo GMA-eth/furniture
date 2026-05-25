@@ -22,7 +22,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const bestsellers = getBestsellers().map((p) => getLocalizedProduct(p, locale));
 
   return (
-    <div className="flex flex-col gap-20 pb-20">
+    <div className="flex flex-col gap-10 pb-10 sm:gap-14 sm:pb-14 lg:gap-20 lg:pb-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd(baseUrl), websiteJsonLd(baseUrl)]) }} />
       <Hero dict={dict} lang={lang} />
       <CategoryGrid categories={categories} dict={dict} lang={lang} />

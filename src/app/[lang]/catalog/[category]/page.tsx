@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
           ),
         }}
       />
-      <h1 className="font-heading text-3xl font-bold tracking-tight">{category.name}</h1>
+      <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">{category.name}</h1>
       <p className="mt-2 text-muted-foreground">{category.description}</p>
       <div className="mt-8 flex gap-8">
         <Suspense fallback={null}>
