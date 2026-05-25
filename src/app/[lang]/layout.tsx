@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CartDrawerProvider } from "@/components/cart/cart-drawer-provider";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { HtmlDir } from "@/components/layout/html-dir";
 import { getDictionary } from "@/i18n/dictionaries";
 import { localeMeta, locales, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -52,19 +53,18 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   const meta = localeMeta[locale];
 
   return (
-    <html lang={locale} dir={meta.dir}>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <TooltipProvider>
-          <CartDrawerProvider dict={dict} lang={locale}>
-            <Header lang={locale} dict={dict} />
-            <main className="flex-1">{children}</main>
-            <Footer lang={locale} dict={dict} />
-            <LanguageSwitcher lang={locale} dict={dict} />
-          </CartDrawerProvider>
-          <Toaster position={locale === "ar" ? "bottom-left" : "bottom-right"} richColors />
-        </TooltipProvider>
-      </body>
-    </html>
+    <>
+      <HtmlDir lang={locale} dir={meta.dir} />
+      <TooltipProvider>
+        <CartDrawerProvider dict={dict} lang={locale}>
+          <Header lang={locale} dict={dict} />
+          <main className="flex-1">{children}</main>
+          <Footer lang={locale} dict={dict} />
+          <LanguageSwitcher lang={locale} dict={dict} />
+        </CartDrawerProvider>
+        <Toaster position={locale === "ar" ? "bottom-left" : "bottom-right"} richColors />
+      </TooltipProvider>
+    </>
   );
 }
 
