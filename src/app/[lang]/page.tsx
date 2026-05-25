@@ -6,16 +6,15 @@ import { CategoryGrid } from "@/components/home/category-grid";
 import { Bestsellers } from "@/components/home/bestsellers";
 import { Testimonials } from "@/components/home/testimonials";
 import { getDictionary } from "@/i18n/dictionaries";
-import type { Locale } from "@/i18n/config";
-import type { Dictionary } from "@/i18n/dictionaries";
+import { locales, type Locale } from "@/i18n/config";
 
 const baseUrl = "https://furni.com";
 
-interface HomePageProps {
-  params: Promise<{ lang: string }>;
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
 }
 
-export default async function HomePage({ params }: HomePageProps) {
+export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const locale = lang as Locale;
   const dict = await getDictionary(locale);
@@ -24,12 +23,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="flex flex-col gap-20 pb-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([organizationJsonLd(baseUrl), websiteJsonLd(baseUrl)]),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd(baseUrl), websiteJsonLd(baseUrl)]) }} />
       <Hero dict={dict} />
       <CategoryGrid categories={categories} dict={dict} lang={lang} />
       <Bestsellers products={bestsellers} dict={dict} lang={lang} />

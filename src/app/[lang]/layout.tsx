@@ -6,10 +6,14 @@ import { Footer } from "@/components/layout/footer";
 import { CartDrawerProvider } from "@/components/cart/cart-drawer-provider";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { getDictionary } from "@/i18n/dictionaries";
-import { localeMeta, type Locale } from "@/i18n/config";
+import { localeMeta, locales, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 const baseUrl = "https://furni.com";
+
+export async function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -45,22 +49,17 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   const { lang } = await params;
   const locale = lang as Locale;
   const dict = await getDictionary(locale);
-  const meta = localeMeta[locale];
 
   return (
-    <html lang={locale} dir={meta.dir}>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <TooltipProvider>
-          <CartDrawerProvider dict={dict}>
-            <Header lang={locale} dict={dict} />
-            <main className="flex-1">{children}</main>
-            <Footer lang={locale} dict={dict} />
-            <LanguageSwitcher lang={locale} dict={dict} />
-          </CartDrawerProvider>
-          <Toaster position="bottom-right" richColors />
-        </TooltipProvider>
-      </body>
-    </html>
+    <TooltipProvider>
+      <CartDrawerProvider dict={dict}>
+        <Header lang={locale} dict={dict} />
+        <main className="flex-1">{children}</main>
+        <Footer lang={locale} dict={dict} />
+        <LanguageSwitcher lang={locale} dict={dict} />
+      </CartDrawerProvider>
+      <Toaster position="bottom-right" richColors />
+    </TooltipProvider>
   );
 }
 

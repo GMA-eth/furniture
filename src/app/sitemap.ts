@@ -2,6 +2,8 @@ import { getProducts, getCategories } from "@/lib/data";
 
 const baseUrl = "https://furni.com";
 
+export const dynamic = "force-static";
+
 export default function sitemap() {
   const products = getProducts();
   const categories = getCategories();

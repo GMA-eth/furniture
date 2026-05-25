@@ -1,7 +1,5 @@
-import { getProduct, getBestsellers, getCategory } from "@/lib/data";
+import { getProduct, getBestsellers, getCategory, getProducts } from "@/lib/data";
 import { getLocalizedProduct, getLocalizedCategory } from "@/lib/data-localized";
-import { getDictionary } from "@/i18n/dictionaries";
-import type { Locale } from "@/i18n/config";
 import { productJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/structured-data";
 import { Breadcrumbs } from "@/components/product/breadcrumbs";
 import { ImageGallery } from "@/components/product/image-gallery";
@@ -13,15 +11,24 @@ import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { formatCurrency } from "@/lib/utils";
 import { Star } from "lucide-react";
+import { getDictionary } from "@/i18n/dictionaries";
+import { locales, type Locale } from "@/i18n/config";
 import type { Metadata } from "next";
-
-interface ProductPageProps {
-  params: Promise<{ lang: string; slug: string }>;
-}
 
 const baseUrl = "https://furni.com";
 
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export function generateStaticParams() {
+  const products = getProducts();
+  const params: Array<{ lang: string; slug: string }> = [];
+  for (const lang of locales) {
+    for (const p of products) {
+      params.push({ lang, slug: p.slug });
+    }
+  }
+  return params;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
   const { lang, slug } = await params;
   const product = getProduct(slug);
   if (!product) return { title: "Product Not Found" };
@@ -32,7 +39,10 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title: localized.seoTitle ?? localized.name,
     description: localized.seoDescription,
-    alternates: { canonical: `${baseUrl}/${lang}/product/${localized.slug}` },
+    alternates: {
+      canonical: `${baseUrl}/${lang}/product/${localized.slug}`,
+      languages: { en: `/en/product/${localized.slug}`, ar: `/ar/product/${localized.slug}` },
+    },
     openGraph: {
       title: localized.seoTitle ?? localized.name,
       description: localized.seoDescription,
@@ -41,7 +51,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
   const { lang, slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
@@ -66,7 +76,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            productJsonLd(localized, `${baseUrl}/${lang}`),
+            productJsonLd(localized, baseUrl),
             breadcrumbJsonLd(breadcrumbItems),
             faqJsonLd(localized.faq),
           ]),
@@ -88,33 +98,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         <div className="flex flex-col gap-6">
           <div>
-            <div className="flex items-start justify-between gap-4">
-              <h1 className="font-heading text-3xl font-bold tracking-tight">{localized.name}</h1>
-            </div>
-
+            <h1 className="font-heading text-3xl font-bold tracking-tight">{localized.name}</h1>
             <div className="mt-2 flex items-center gap-2">
               <div className="flex items-center gap-1">
                 <Star className="size-4 fill-primary text-primary" data-icon="inline-start" />
                 <span className="text-sm font-medium">{localized.rating.toFixed(1)}</span>
               </div>
-              <span className="text-sm text-muted-foreground">
-                ({localized.reviewCount} {dict.product?.reviews ?? "reviews"})
-              </span>
+              <span className="text-sm text-muted-foreground">({localized.reviewCount} {dict.product.reviews})</span>
             </div>
-
             <div className="mt-4 flex items-baseline gap-3">
               <span className="text-2xl font-bold tabular-nums">{formatCurrency(localized.price)}</span>
               {localized.compareAtPrice && (
-                <span className="text-lg text-muted-foreground line-through tabular-nums">
-                  {formatCurrency(localized.compareAtPrice)}
-                </span>
+                <span className="text-lg text-muted-foreground line-through tabular-nums">{formatCurrency(localized.compareAtPrice)}</span>
               )}
             </div>
-
             {!localized.inStock && (
-              <Badge variant="destructive" className="mt-3">
-                {dict.product?.outOfStock ?? "Out of Stock"}
-              </Badge>
+              <Badge variant="destructive" className="mt-3">{dict.product.outOfStock}</Badge>
             )}
           </div>
 
@@ -123,10 +122,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="flex flex-col gap-2 text-sm text-muted-foreground">
             {localized.leadTime && <p>{localized.leadTime}</p>}
             {localized.shippingCost !== undefined && localized.shippingCost > 0 && (
-              <p>{dict.product?.shipping ?? "Shipping"}: {formatCurrency(localized.shippingCost)}</p>
+              <p>{dict.product.shippingLabel.replace("{cost}", formatCurrency(localized.shippingCost))}</p>
             )}
             {localized.freeShippingThreshold && (
-              <p>{dict.product?.freeShipping ?? "Free shipping on orders over"} {formatCurrency(localized.freeShippingThreshold)}</p>
+              <p>{dict.product.freeShippingOnOrders.replace("{amount}", formatCurrency(localized.freeShippingThreshold))}</p>
             )}
           </div>
         </div>

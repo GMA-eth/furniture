@@ -25,10 +25,7 @@ export const metadata: Metadata = {
   description:
     "Discover beautifully crafted furniture for every room. Modern designs, honest prices, and free shipping on orders over $1,000.",
   metadataBase: new URL("https://furni.com"),
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
