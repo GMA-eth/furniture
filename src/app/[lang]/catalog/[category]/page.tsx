@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ lang:
       <p className="mt-2 text-muted-foreground">{category.description}</p>
       <div className="mt-8 flex gap-8">
         <Suspense fallback={null}>
-          <FilterSidebar categories={categories} priceRange={priceRange} activeFilters={filters} basePath={`/${lang}/catalog/${slug}`} dict={dict} lang={lang} />
+          <FilterSidebar categories={categories} priceRange={priceRange} activeFilters={filters} basePath={`/catalog/${slug}`} dict={dict} lang={lang} />
         </Suspense>
         <ProductGrid products={products} dict={dict} lang={lang} />
       </div>
