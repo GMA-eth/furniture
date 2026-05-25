@@ -22,18 +22,22 @@ export function CategoryGrid({ categories, dict, lang }: CategoryGridProps) {
             <Link key={category.slug} href={`/${lang}/catalog/${category.slug}`} className="group">
               <Card className="overflow-hidden border-0 shadow-none">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
-                  <div className="absolute inset-0 flex items-center justify-center bg-muted">
-                    <span className="font-heading text-4xl font-bold text-muted-foreground/20">
-                      {category.name.charAt(0)}
-                    </span>
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    unoptimized
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <h3 className="text-sm font-medium text-white">{category.name}</h3>
+                    <p className="text-xs text-white/70">
+                      {dict.catalog.productsCount.replace("{count}", String(category.productCount)).replace("{plural}", "")}
+                    </p>
                   </div>
                 </div>
-                <CardContent className="px-1 pt-3 pb-0">
-                  <h3 className="text-sm font-medium">{category.name}</h3>
-                  <p className="text-xs text-muted-foreground">
-                    {dict.catalog.productsCount.replace("{count}", String(category.productCount)).replace("{plural}", "")}
-                  </p>
-                </CardContent>
               </Card>
             </Link>
           ))}
