@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Star } from "lucide-react";
 import type { Product } from "@/types";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { formatCurrency } from "@/lib/utils";
 
 interface ProductTabsProps {
   product: Product;
@@ -74,7 +75,7 @@ export function ProductTabs({ product, dict }: ProductTabsProps) {
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1">
-              <Star className="size-5 fill-primary text-primary" data-icon="inline-start" />
+              <Star className="size-5 fill-primary text-primary" data-icon="inline-start" aria-hidden="true" />
               <span className="text-2xl font-bold">{product.rating.toFixed(1)}</span>
             </div>
             <span className="text-sm text-muted-foreground">{product.reviewCount} {dict.product.reviews}</span>
@@ -86,7 +87,7 @@ export function ProductTabs({ product, dict }: ProductTabsProps) {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
                     {Array.from({ length: review.rating }).map((_, j) => (
-                      <Star key={j} className="size-3.5 fill-primary text-primary" data-icon="inline-start" />
+                      <Star key={j} className="size-3.5 fill-primary text-primary" data-icon="inline-start" aria-hidden="true" />
                     ))}
                   </div>
                   <span className="text-xs text-muted-foreground">{review.date}</span>
@@ -117,7 +118,7 @@ export function ProductTabs({ product, dict }: ProductTabsProps) {
             <h3 className="text-sm font-semibold">{dict.product.shippingCost}</h3>
             <p className="mt-1 text-sm text-muted-foreground">
               {product.shippingCost && product.shippingCost > 0
-                ? `$${(product.shippingCost / 100).toFixed(2)}`
+                ? formatCurrency(product.shippingCost)
                 : dict.common.free}
             </p>
           </div>
@@ -125,7 +126,7 @@ export function ProductTabs({ product, dict }: ProductTabsProps) {
             <div>
               <h3 className="text-sm font-semibold">{dict.product.freeShipping}</h3>
               <p className="mt-1 text-sm text-muted-foreground">
-                {dict.product.onOrdersOver} ${(product.freeShippingThreshold / 100).toFixed(0)}
+                {dict.product.onOrdersOver} {formatCurrency(product.freeShippingThreshold)}
               </p>
             </div>
           )}

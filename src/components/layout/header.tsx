@@ -78,7 +78,7 @@ export function Header({ lang, dict }: HeaderProps) {
             <SheetTrigger render={<Button variant="ghost" size="icon" className="md:hidden" aria-label={dict.nav.menu} />}>
               <Menu data-icon="inline-start" />
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side={lang === "ar" ? "right" : "left"}>
               <SheetTitle className="sr-only">{dict.nav.menu}</SheetTitle>
               <nav className="flex flex-col gap-4 mt-8">
                 <Link href={`/${lang}/catalog`} className="text-lg font-medium">

@@ -38,7 +38,7 @@ export function ProductGrid({ products, dict, lang }: ProductGridProps) {
       <p className="mb-6 text-sm text-muted-foreground">
         {dict.catalog.productsCount
           .replace("{count}", String(products.length))
-          .replace("{plural}", "")}
+          .replace("{plural}", products.length !== 1 ? "s" : "")}
       </p>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {products.map((product) => (

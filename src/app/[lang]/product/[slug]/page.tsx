@@ -101,7 +101,7 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
             <h1 className="font-heading text-3xl font-bold tracking-tight">{localized.name}</h1>
             <div className="mt-2 flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <Star className="size-4 fill-primary text-primary" data-icon="inline-start" />
+                <Star className="size-4 fill-primary text-primary" data-icon="inline-start" aria-hidden="true" />
                 <span className="text-sm font-medium">{localized.rating.toFixed(1)}</span>
               </div>
               <span className="text-sm text-muted-foreground">({localized.reviewCount} {dict.product.reviews})</span>

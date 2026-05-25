@@ -36,6 +36,9 @@ export function AddToCart({ product, dict }: AddToCartProps) {
       size: product.sizeVariants ? selectedSize : undefined,
       price,
       quantity,
+    }, {
+      added: dict.toast?.addedToCart ?? "Added to cart",
+      viewCart: dict.toast?.viewCart ?? "View cart",
     });
   };
 

@@ -31,12 +31,12 @@ export function ProductCard({ product, priority = false, dict, lang }: ProductCa
             priority={priority}
           />
           {product.compareAtPrice && (
-            <Badge variant="secondary" className="absolute left-3 top-3">
+            <Badge variant="secondary" className="absolute start-3 top-3">
               {dict.badge.sale}
             </Badge>
           )}
           {product.tags.includes("new") && !product.compareAtPrice && (
-            <Badge variant="outline" className="absolute left-3 top-3 bg-background/80">
+            <Badge variant="outline" className="absolute start-3 top-3 bg-background/80">
               {dict.badge.new}
             </Badge>
           )}
@@ -52,7 +52,7 @@ export function ProductCard({ product, priority = false, dict, lang }: ProductCa
             )}
           </div>
           <div className="mt-1 flex items-center gap-1">
-            <Star className="size-3 fill-primary text-primary" data-icon="inline-start" />
+            <Star className="size-3 fill-primary text-primary" data-icon="inline-start" aria-hidden="true" />
             <span className="text-xs font-medium">{formatRating(product.rating)}</span>
             <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
           </div>

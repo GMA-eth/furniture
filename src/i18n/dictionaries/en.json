@@ -16,12 +16,12 @@
   },
   "home": {
     "heroTitle": "Furniture that lives with you",
-    "heroSubtitle": "Thoughtfully designed. Honestly priced. Built to last a lifetime \u2014 and beyond.",
+    "heroSubtitle": "Thoughtfully designed. Honestly priced. Built to last a lifetime — and beyond.",
     "shopCollection": "Shop Collection",
     "livingRoom": "Living Room",
     "shopByRoom": "Shop by Room",
     "bestsellers": "Bestsellers",
-    "bestsellersSubtitle": "The pieces everyone\u2019s talking about",
+    "bestsellersSubtitle": "The pieces everyone’s talking about",
     "viewAll": "View All",
     "testimonials": "What our customers say",
     "verifiedBuyer": "Verified Buyer",
@@ -40,7 +40,7 @@
     "inStockOnly": "In Stock Only",
     "rating": "Rating",
     "noProducts": "No products found",
-    "noProductsDesc": "Try adjusting your filters or search terms to find what you\u2019re looking for.",
+    "noProductsDesc": "Try adjusting your filters or search terms to find what you’re looking for.",
     "clearFilters": "Clear all filters",
     "productsCount": "{count} product{plural}"
   },
@@ -83,8 +83,8 @@
     "title": "Cart",
     "yourCart": "Your Cart",
     "empty": "Your cart is empty",
-    "emptyDesc": "Looks like you haven\u2019t added anything yet. Explore our collection to find your perfect piece.",
-    "emptyDescShort": "Looks like you haven\u2019t added anything yet. Explore our collection.",
+    "emptyDesc": "Looks like you haven’t added anything yet. Explore our collection to find your perfect piece.",
+    "emptyDescShort": "Looks like you haven’t added anything yet. Explore our collection.",
     "shopNow": "Shop Now",
     "checkout": "Checkout",
     "viewCart": "View Cart",
@@ -113,7 +113,7 @@
     "phone": "Phone",
     "placeOrder": "Place Order",
     "orderConfirmed": "Order Confirmed!",
-    "orderConfirmedDesc": "Thank you for your order. You\u2019ll receive a confirmation email shortly with your order details and tracking information.",
+    "orderConfirmedDesc": "Thank you for your order. You’ll receive a confirmation email shortly with your order details and tracking information.",
     "continueShopping": "Continue Shopping",
     "orderSummary": "Order Summary",
     "subtotal": "Subtotal",
@@ -138,7 +138,7 @@
     "press": "Press",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "copyright": "\u00a9 {year} Furni. All rights reserved.",
+    "copyright": "© {year} Furni. All rights reserved.",
     "description": "Thoughtfully designed furniture for every room. Honest prices, sustainable materials, and a 10-year warranty on every piece."
   },
   "sort": {
@@ -155,8 +155,12 @@
   "common": {
     "starRating": "{rating} stars",
     "free": "Free",
-    "backordered": "Backordered \u2014 ships in 4-6 weeks",
+    "backordered": "Backordered — ships in 4-6 weeks",
     "shipsIn": "Ships in {days} business days",
     "shipsInRange": "Ships in {min}-{max} business days"
+  },
+  "toast": {
+    "addedToCart": "Added to cart",
+    "viewCart": "View cart"
   }
 }

@@ -36,7 +36,7 @@ export function useCart() {
 export function useAddToCart() {
   const { mutate } = useCart();
 
-  return (item: CartItem) => {
+  return (item: CartItem, toastLabels?: { added?: string; viewCart?: string }) => {
     const current = getLocalCart();
     const existing = current.find(
       (i) => i.productId === item.productId && i.color === item.color && i.size === item.size
@@ -55,10 +55,10 @@ export function useAddToCart() {
 
     persistCart(updated);
     mutate(updated, false);
-    toast.success("Added to cart", {
+    toast.success(toastLabels?.added ?? "Added to cart", {
       description: item.name,
       action: {
-        label: "View cart",
+        label: toastLabels?.viewCart ?? "View cart",
         onClick: () => {
           const event = new CustomEvent("open-cart");
           window.dispatchEvent(event);

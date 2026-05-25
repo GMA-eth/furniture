@@ -148,7 +148,7 @@ export function FilterSidebar({ categories, priceRange, activeFilters, basePath,
           <SheetTrigger render={<Button variant="outline" size="sm" />}>
             <SlidersHorizontal data-icon="inline-start" /> {dict.catalog.filters}
           </SheetTrigger>
-          <SheetContent side="left" className="w-72 sm:max-w-sm">
+          <SheetContent side={lang === "ar" ? "right" : "left"} className="w-72 sm:max-w-sm">
             <SheetHeader>
               <SheetTitle>{dict.catalog.filters}</SheetTitle>
             </SheetHeader>

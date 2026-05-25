@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getFilteredProducts, getCategories, getPriceRange } from "@/lib/data";
 import { getLocalizedProduct, getLocalizedCategory } from "@/lib/data-localized";
+import { collectionJsonLd } from "@/lib/structured-data";
 import { FilterSidebar } from "@/components/catalog/filter-sidebar";
 import { ProductGrid } from "@/components/catalog/product-grid";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -35,6 +36,14 @@ export default async function CatalogPage({ params }: { params: Promise<{ lang: 
 
   return (
     <div className="mx-auto max-w-screen-2xl px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            collectionJsonLd(dict.catalog.allFurniture, dict.site.tagline, `${baseUrl}/${lang}/catalog`)
+          ),
+        }}
+      />
       <h1 className="font-heading text-3xl font-bold tracking-tight">{dict.catalog.allFurniture}</h1>
       <div className="mt-8 flex gap-8">
         <Suspense fallback={null}>

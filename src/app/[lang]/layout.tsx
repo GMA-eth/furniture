@@ -61,7 +61,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
             <Footer lang={locale} dict={dict} />
             <LanguageSwitcher lang={locale} dict={dict} />
           </CartDrawerProvider>
-          <Toaster position="bottom-right" richColors />
+          <Toaster position={locale === "ar" ? "bottom-left" : "bottom-right"} richColors />
         </TooltipProvider>
       </body>
     </html>

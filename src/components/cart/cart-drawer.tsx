@@ -86,7 +86,7 @@ export function CartDrawer({ open, onOpenChange, dict, lang }: CartDrawerProps) 
                       <div className="flex items-start justify-between">
                         <div>
                           <Link
-                            href={`/product/${item.slug}`}
+                            href={`/${lang}/product/${item.slug}`}
                             onClick={() => onOpenChange(false)}
                             className="text-sm font-medium leading-snug hover:underline"
                           >

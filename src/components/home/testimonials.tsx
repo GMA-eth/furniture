@@ -38,7 +38,7 @@ export function Testimonials({ dict }: TestimonialsProps) {
                   <CardContent className="flex flex-col items-center gap-4 px-8 text-center">
                     <div className="flex gap-0.5">
                       {Array.from({ length: t.rating }).map((_, j) => (
-                        <Star key={j} className="size-4 fill-primary text-primary" data-icon="inline-start" />
+                        <Star key={j} className="size-4 fill-primary text-primary" data-icon="inline-start" aria-hidden="true" />
                       ))}
                     </div>
                     <blockquote className="text-lg leading-relaxed text-muted-foreground">

@@ -75,20 +75,20 @@ export function CheckoutPageClient({ dict, lang }: CheckoutPageClientProps) {
             <CardContent className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <Label htmlFor="name">{dict.checkout.fullName}</Label>
-                <Input id="name" placeholder="Jane Smith" />
+                <Input id="name" />
               </div>
               <div className="flex flex-col gap-2">
                 <Label htmlFor="address">{dict.checkout.address}</Label>
-                <Input id="address" placeholder="123 Main St" />
+                <Input id="address" />
               </div>
               <div className="flex gap-4">
                 <div className="flex-1 flex flex-col gap-2">
                   <Label htmlFor="city">{dict.checkout.city}</Label>
-                  <Input id="city" placeholder="New York" />
+                  <Input id="city" />
                 </div>
                 <div className="w-32 flex flex-col gap-2">
                   <Label htmlFor="zip">{dict.checkout.zipCode}</Label>
-                  <Input id="zip" placeholder="10001" />
+                  <Input id="zip" />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
@@ -107,7 +107,7 @@ export function CheckoutPageClient({ dict, lang }: CheckoutPageClientProps) {
               </div>
               <div className="flex flex-col gap-2">
                 <Label htmlFor="phone">{dict.checkout.phone}</Label>
-                <Input id="phone" placeholder="(555) 123-4567" type="tel" />
+                <Input id="phone" type="tel" />
               </div>
             </CardContent>
           </Card>
