@@ -18,7 +18,7 @@ export function useCartDrawer() {
   return useContext(CartDrawerContext);
 }
 
-export function CartDrawerProvider({ children, dict }: { children: ReactNode; dict: Dictionary }) {
+export function CartDrawerProvider({ children, dict, lang }: { children: ReactNode; dict: Dictionary; lang: string }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function CartDrawerProvider({ children, dict }: { children: ReactNode; di
   return (
     <CartDrawerContext.Provider value={{ open, setOpen }}>
       {children}
-      <CartDrawer open={open} onOpenChange={setOpen} dict={dict} />
+      <CartDrawer open={open} onOpenChange={setOpen} dict={dict} lang={lang} />
     </CartDrawerContext.Provider>
   );
 }

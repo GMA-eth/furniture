@@ -29,9 +29,10 @@ interface CartDrawerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   dict: Dictionary;
+  lang: string;
 }
 
-export function CartDrawer({ open, onOpenChange, dict }: CartDrawerProps) {
+export function CartDrawer({ open, onOpenChange, dict, lang }: CartDrawerProps) {
   const { items, itemCount, subtotal } = useCart();
   const updateQuantity = useUpdateQuantity();
   const removeFromCart = useRemoveFromCart();
@@ -56,7 +57,7 @@ export function CartDrawer({ open, onOpenChange, dict }: CartDrawerProps) {
               </EmptyHeader>
               <EmptyContent>
                 <Link
-                  href="/catalog"
+                  href={`/${lang}/catalog`}
                   className={cn(buttonVariants())}
                   onClick={() => onOpenChange(false)}
                 >
@@ -148,14 +149,14 @@ export function CartDrawer({ open, onOpenChange, dict }: CartDrawerProps) {
 
               <SheetFooter className="mt-4">
                 <Link
-                  href="/checkout"
+                  href={`/${lang}/checkout`}
                   className={cn(buttonVariants({ size: "lg" }), "w-full inline-flex")}
                   onClick={() => onOpenChange(false)}
                 >
                   {dict.cart.checkout}
                 </Link>
                 <Link
-                  href="/cart"
+                  href={`/${lang}/cart`}
                   className={cn(buttonVariants({ variant: "outline" }), "w-full inline-flex")}
                   onClick={() => onOpenChange(false)}
                 >

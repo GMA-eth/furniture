@@ -55,7 +55,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
     <html lang={locale} dir={meta.dir}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <TooltipProvider>
-          <CartDrawerProvider dict={dict}>
+          <CartDrawerProvider dict={dict} lang={locale}>
             <Header lang={locale} dict={dict} />
             <main className="flex-1">{children}</main>
             <Footer lang={locale} dict={dict} />
