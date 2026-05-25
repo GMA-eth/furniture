@@ -43,7 +43,7 @@ export function ImageGallery({ images, productName, dict }: ImageGalleryProps) {
         </div>
       </button>
 
-      <div className="flex gap-3 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden snap-x">
+      <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden snap-x">
         {images.map((image, index) => (
           <button
             key={image.src}

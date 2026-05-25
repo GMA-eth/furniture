@@ -93,7 +93,7 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
         dict={dict}
       />
 
-      <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div className="mt-4 sm:mt-6 grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
         <ImageGallery images={localized.images} productName={localized.name} dict={dict} />
 
         <div className="flex flex-col gap-6">

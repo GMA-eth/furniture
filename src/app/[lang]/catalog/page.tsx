@@ -35,7 +35,7 @@ export default async function CatalogPage({ params }: { params: Promise<{ lang: 
   const priceRange = getPriceRange();
 
   return (
-    <div className="mx-auto max-w-screen-2xl px-4 py-12">
+    <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:py-8 lg:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -45,7 +45,7 @@ export default async function CatalogPage({ params }: { params: Promise<{ lang: 
         }}
       />
       <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">{dict.catalog.allFurniture}</h1>
-      <div className="mt-8 flex gap-8">
+      <div className="mt-6 sm:mt-8 flex gap-4 lg:gap-8">
         <Suspense fallback={null}>
           <FilterSidebar categories={categories} priceRange={priceRange} activeFilters={{}} basePath="/catalog" dict={dict} lang={lang} />
         </Suspense>
