@@ -49,17 +49,22 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   const { lang } = await params;
   const locale = lang as Locale;
   const dict = await getDictionary(locale);
+  const meta = localeMeta[locale];
 
   return (
-    <TooltipProvider>
-      <CartDrawerProvider dict={dict}>
-        <Header lang={locale} dict={dict} />
-        <main className="flex-1">{children}</main>
-        <Footer lang={locale} dict={dict} />
-        <LanguageSwitcher lang={locale} dict={dict} />
-      </CartDrawerProvider>
-      <Toaster position="bottom-right" richColors />
-    </TooltipProvider>
+    <html lang={locale} dir={meta.dir}>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <TooltipProvider>
+          <CartDrawerProvider dict={dict}>
+            <Header lang={locale} dict={dict} />
+            <main className="flex-1">{children}</main>
+            <Footer lang={locale} dict={dict} />
+            <LanguageSwitcher lang={locale} dict={dict} />
+          </CartDrawerProvider>
+          <Toaster position="bottom-right" richColors />
+        </TooltipProvider>
+      </body>
+    </html>
   );
 }
 

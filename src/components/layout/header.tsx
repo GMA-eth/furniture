@@ -43,13 +43,13 @@ export function Header({ lang, dict }: HeaderProps) {
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink href={`/${lang}/catalog`} className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink render={<Link href={`/${lang}/catalog`} />} className={navigationMenuTriggerStyle()}>
                 {dict.nav.shopAll}
               </NavigationMenuLink>
             </NavigationMenuItem>
             {navLinks.map((link) => (
               <NavigationMenuItem key={link.href}>
-                <NavigationMenuLink href={link.href} className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink render={<Link href={link.href} />} className={navigationMenuTriggerStyle()}>
                   {link.label}
                 </NavigationMenuLink>
               </NavigationMenuItem>
