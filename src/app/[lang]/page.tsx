@@ -1,0 +1,39 @@
+import { getBestsellers, getCategories } from "@/lib/data";
+import { getLocalizedProduct, getLocalizedCategory } from "@/lib/data-localized";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
+import { Hero } from "@/components/home/hero";
+import { CategoryGrid } from "@/components/home/category-grid";
+import { Bestsellers } from "@/components/home/bestsellers";
+import { Testimonials } from "@/components/home/testimonials";
+import { getDictionary } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
+
+const baseUrl = "https://furni.com";
+
+interface HomePageProps {
+  params: Promise<{ lang: string }>;
+}
+
+export default async function HomePage({ params }: HomePageProps) {
+  const { lang } = await params;
+  const locale = lang as Locale;
+  const dict = await getDictionary(locale);
+  const categories = getCategories().map((c) => getLocalizedCategory(c, locale));
+  const bestsellers = getBestsellers().map((p) => getLocalizedProduct(p, locale));
+
+  return (
+    <div className="flex flex-col gap-20 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([organizationJsonLd(baseUrl), websiteJsonLd(baseUrl)]),
+        }}
+      />
+      <Hero dict={dict} />
+      <CategoryGrid categories={categories} dict={dict} lang={lang} />
+      <Bestsellers products={bestsellers} dict={dict} lang={lang} />
+      <Testimonials dict={dict} />
+    </div>
+  );
+}

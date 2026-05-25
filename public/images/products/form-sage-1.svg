@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#9CAF88"/>
+  <rect x="120" y="90" width="960" height="720" rx="8" fill="#5C6B4E" opacity="0.25"/>
+  <text x="600" y="450" text-anchor="middle" dy=".35em" font-family="system-ui,sans-serif" font-weight="600" font-size="63.00000000000001" fill="#5C6B4E" opacity="0.6">Form Sage 1</text>
+</svg>
